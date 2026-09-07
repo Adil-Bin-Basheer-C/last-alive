@@ -1,0 +1,11 @@
+const centerX=700
+const centerY=400
+const zoom=1
+const widthOfCharecter=11*zoom;
+const heightOfCharecter=11*zoom;
+const speed=6;
+const currentPositionXMax=700;
+const currentPositionXMin=-1777+700;
+const currentPositionYMax=400;
+const currentPositionYMin=-1498.4000244140625+400;
+export {centerX,centerY,zoom,widthOfCharecter,heightOfCharecter,speed,currentPositionXMax,currentPositionXMin,currentPositionYMax,currentPositionYMin}
