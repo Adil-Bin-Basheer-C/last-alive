@@ -12,7 +12,6 @@ export function useGame(edgeOfContainer,roomid,enterMatch){
     const [loading,setLoading]=useState(null)
     const inte=useRef(null)
 
-    
   useEffect(()=>{
         socket.on("all_initialized",(input)=>{
 

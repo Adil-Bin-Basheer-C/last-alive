@@ -49,10 +49,14 @@ export function gameHandler(io, socket) {
       rooms[enteredid]["players"][socket.id]["prevDir"] = "right"
 
       if (!willCollide(20, 0, centerX - rooms[enteredid]["players"][socket.id]["iposx"], centerY - rooms[enteredid]["players"][socket.id]["iposy"], rooms[enteredid]["players"][socket.id]["boxes"])) {
-        rooms[enteredid]["players"][socket.id]["prevMotion"] = () => { move(-speed, 0, socket, enteredid, rooms[enteredid]["players"][socket.id]["boxes"]) };
+        let sign=(Math.random()<0.5 ? 1:-1)
+        rooms[enteredid]["players"][socket.id]["prevMotion"] = () => { move(speed*sign, 0, socket, enteredid, rooms[enteredid]["players"][socket.id]["boxes"]) };
+        rooms[enteredid]["players"][socket.id]["prevDir"]=sign===1 ? "left" : "right"
       }
       else {
-        rooms[enteredid]["players"][socket.id]["prevMotion"] = () => { move(0, -speed, socket, enteredid, rooms[enteredid]["players"][socket.id]["boxes"]) };
+        let sign=(Math.random()<0.5 ? 1:-1)
+        rooms[enteredid]["players"][socket.id]["prevMotion"] = () => { move(0, speed*sign, socket, enteredid, rooms[enteredid]["players"][socket.id]["boxes"]) };
+        rooms[enteredid]["players"][socket.id]["prevDir"]=sign===1 ? "up" : "down"
       }
 
       rooms[enteredid]["players"][socket.id]["block"] = true;
@@ -148,12 +152,14 @@ export function gameHandler(io, socket) {
         if (human == 1 && rooms[enteredid]["gameOver"] == false) {
           io.to(enteredid).emit("timer",true)
           rooms[enteredid]["lasttime"] = setTimeout(() => {
+            if (rooms[enteredid]?.["players"]?.[lastman]?.["becomeZombie"] === true) {
             if (rooms[enteredid]["players"][lastman]["becomeZombie"] == true) {
               io.to(enteredid).emit("survived", [false, rooms[enteredid]["players"][lastman]["name"]])
             }
             else {
               io.to(enteredid).emit("survived", [true, rooms[enteredid]["players"][lastman]["name"]])
             }
+          }
 
             for (const [id, player] of Object.entries(rooms[enteredid].players)) {
 

@@ -1,4 +1,4 @@
-
+//starting from over boxes is due to starting from out of the field which is due to randomgeneration which is does to currmax and min due to changinf sizze of field
 import { useState,useRef,useEffect, useMemo } from 'react'
 import './App.css'
 import Me from './components/Me';
@@ -21,8 +21,8 @@ const edgeOfContainer=useRef();
 
 const {roomID,players,createRoom,enteredRoomID,iamReady,enterMatch,leaveRoom,roomState,showRoomPage}=useRoom()
 const {currentPositionOfOthers,angle,currentPosition,becameZombie,winner,loading}=useGame(edgeOfContainer,roomID,enterMatch)
-const noOfColumns=Math.max(30,8)
-const noOfRows=Math.max(30,8)
+const noOfColumns=Math.max(players.length*2,8)
+const noOfRows=Math.max(players.length*2,8)
 const widthOfBox=1800/10
 const heightOfBox=1500/10
 const ultimateContainer=useRef();

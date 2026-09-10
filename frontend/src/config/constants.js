@@ -1,10 +1,8 @@
 const gap=18;
-const noOfColumns=13;
-const noOfRows=13;
-const widthOfBox=290;
-const heightOfBox=290;
-const centerX=700
-const centerY=400
+//const centerX=700
+//const centerY=400
+const centerX=(1536/2)
+const centerY=(674/2)
 const zoom=1
 const widthOfCharecter=13*zoom;
 const heightOfCharecter=13*zoom;
