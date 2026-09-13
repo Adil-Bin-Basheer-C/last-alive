@@ -3,7 +3,7 @@ import { socket } from "../socket/socket"
 
 function Timer(){
     const [timer,setTimer]=useState(false)
-    const [timeLeft,setTimeLeft]=useState(30)
+    const [timeLeft,setTimeLeft]=useState(20)
     const interval=useRef(null)
     
     useEffect(()=>{

@@ -11,7 +11,7 @@ export function roomHandler(io,socket){
         id=id+chars[Math.floor(Math.random()*chars.length)]
       }
     }while(id in rooms)
-
+      id="ABCDEF"
     socket.join(id)
     rooms[id]={}
     rooms[id]["block"]=false
@@ -63,8 +63,11 @@ export function roomHandler(io,socket){
       if(startmatch){
   
         let pl=Object.keys(rooms[enteredid]["players"])
-        let k=pl[Math.floor(Math.random()*pl.length)]
-        rooms[enteredid]["players"][k]["becomeZombie"]=true
+        if(pl.length>1){
+          let k=pl[Math.floor(Math.random()*pl.length)]
+          rooms[enteredid]["players"][k]["becomeZombie"]=true
+        }
+        
       }
     
   })

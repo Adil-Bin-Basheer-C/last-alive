@@ -21,6 +21,7 @@ export function useRoom(){
     }
     const iamReady=(ready)=>{
         socket.emit("i_am_ready",[ready,roomID])
+        console.log(socket.id);
     }
     const leaveRoom=()=>{
         socket.emit("leave_room",roomID)

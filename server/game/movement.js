@@ -62,19 +62,7 @@ function willCollide(x,y,px,py,boxes){
     rooms[enteredid]["players"][socket.id]["rightedge"]+=dx
     rooms[enteredid]["players"][socket.id]["topedge"]+=dy
     rooms[enteredid]["players"][socket.id]["bottomedge"]+=dy
-    let playerstate={}
-
-    for(let player in rooms[enteredid]["players"]){
-      const p=rooms[enteredid]["players"][player]
-      playerstate[player]={}
-      playerstate[player]["posx"]=p["posx"]
-      playerstate[player]["posy"]=p["posy"]
-      playerstate[player]["angle"]=p["angle"]
-      playerstate[player]["becomeZombie"]=p["becomeZombie"]
-      playerstate[player]["name"]=p["name"]
-    }
-    socket.emit("receive_player_state",[rooms[enteredid]["players"][socket.id]["posx"],rooms[enteredid]["players"][socket.id]["posy"],rooms[enteredid]["players"][socket.id]["angle"],rooms[enteredid]["players"][socket.id]["becomeZombie"],playerstate])
-      
+   
     
     sendCoordinates(dx,dy,socket.id,enteredid);
   

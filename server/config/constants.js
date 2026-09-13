@@ -10,8 +10,9 @@ const zoom=1
 const widthOfCharecter=11*zoom;
 const heightOfCharecter=11*zoom;
 const speed=6;
-const currentPositionXMax=(1536/2);
-const currentPositionXMin=(-1536/2);
-const currentPositionYMax=(674/2);
-const currentPositionYMin=(-674/2);
+const currentPositionXMax = (1536 / 2) - widthOfCharecter / 2;
+const currentPositionXMin = -(1536 / 2) + widthOfCharecter / 2;
+
+const currentPositionYMax = (674 / 2) - heightOfCharecter / 2;
+const currentPositionYMin = -(674 / 2) + heightOfCharecter / 2;
 export {centerX,centerY,zoom,widthOfCharecter,heightOfCharecter,speed,currentPositionXMax,currentPositionXMin,currentPositionYMax,currentPositionYMin}
