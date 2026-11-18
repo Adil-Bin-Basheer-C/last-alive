@@ -38,3 +38,12 @@ Node.js Server
 Game State
       ↓
 Movement / Collision / Game Logic
+
+
+## Gameplay Demo
+
+Here is a demonstration of the multiplayer game,
+showing two players joining the same room
+and interacting in real time.
+
+[Watch Multiplayer Gameplay](assets/Multiplayer-simple-demo.mp4)
