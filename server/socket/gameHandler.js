@@ -20,7 +20,6 @@ export function gameHandler(io, socket) {
 
 
     if (rooms[enteredid].moveInterval) {
-
       clearInterval(rooms[enteredid].moveInterval);
       rooms[enteredid].moveInterval = null;
     }

@@ -1,4 +1,4 @@
-//starting from over boxes is due to starting from out of the field which is due to randomgeneration which is does to currmax and min due to changinf sizze of field
+
 import { useState,useRef,useEffect, useMemo } from 'react'
 import './App.css'
 import Me from './components/Me';
@@ -18,7 +18,6 @@ console.log("socket connected?", socket.connected);
 
 function App(){
 const edgeOfContainer=useRef();
-
 const {roomID,players,createRoom,enteredRoomID,iamReady,enterMatch,leaveRoom,roomState,showRoomPage}=useRoom()
 const {currentPositionOfOthers,angle,currentPosition,becameZombie,winner,loading}=useGame(edgeOfContainer,roomID,enterMatch)
 const noOfColumns=Math.max(players.length*2,8)
@@ -66,7 +65,7 @@ useEffect(()=>{
           edgeOfContainer.current.style.transform=`translate(${0}px,${0}px)`
         }
         
-        lastTime1=timestamp
+        lastTime1=timestamp//delete
     }
     
     translateid=requestAnimationFrame(translateField)

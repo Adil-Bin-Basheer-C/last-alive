@@ -1,27 +1,25 @@
 import { useEffect,useState } from "react";
 import { socket } from "../socket/socket";
-import { initializePlayers,joinedPlayersStatus } from "../../../server/utils/playerUtils";
-import rooms from "../../../server/state/rooms";
+
 export function useRoom(){
 
     const [roomID,setRoomID]=useState("")
     const [players,setPlayers]=useState("")
     const [enterMatch,setEnterMatch]=useState(false)
     const [roomState,setRoomState]=useState("ok")
-    const [name,setName]=useState("")
+    const [name,setName]=useState("")//delete
 
 
     const createRoom=(name)=>{
-        setName(name)
+        setName(name)//delete
         socket.emit("create_room",name)
     }
     const enteredRoomID=(input)=>{
-        setName(input[1])
+        setName(input[1])//delete
         socket.emit("enteredRoomID",input)
     }
     const iamReady=(ready)=>{
         socket.emit("i_am_ready",[ready,roomID])
-        console.log(socket.id);
     }
     const leaveRoom=()=>{
         socket.emit("leave_room",roomID)
@@ -34,10 +32,11 @@ export function useRoom(){
     useEffect(()=>{
         socket.on("get_room_id",(input)=>{
             setRoomID(input[0])
-            setPlayers(input[1])
+            setPlayers(input[1])//delete
         })
+        //both are same
         socket.on("validOrNot",(input)=>{  
-            setRoomID(input[1])
+            setRoomID(input[1])//delete bcoz already exist
             setPlayers(input[0])
             setRoomState("ok")
         })

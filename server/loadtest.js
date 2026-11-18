@@ -11,7 +11,7 @@ import {
 
 import { centerX, centerY, zoom, widthOfCharecter, heightOfCharecter, speed, currentPositionXMax, currentPositionXMin, currentPositionYMax, currentPositionYMin } from "./config/constants.js"
 import { initializePlayers } from "./utils/playerUtils.js";
-const TOTAL_CLIENTS = 100;
+const TOTAL_CLIENTS = 30;
 
 let connected = 0;
 let latency = [];

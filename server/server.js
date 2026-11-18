@@ -6,7 +6,6 @@ const server=http.createServer(app)
 import cors from 'cors';
 app.use(cors())
 import { Server } from 'socket.io';
-import { Socket } from 'net';
 
 import rooms from './state/rooms.js';
 
@@ -34,7 +33,7 @@ io.on("connection",(socket)=>{
     console.log(`User disconnected: ${socket.id}: ${reason}`);
     console.log("DETAILS:", details);
     let roomid=Object.keys(rooms).find(roomId => socket.id in rooms[roomId]["players"]);
-    if (socket.moveInterval) {
+    if (socket.moveInterval) {// no need of this block
     clearInterval(socket.moveInterval);
     socket.moveInterval = null;
 }
@@ -47,18 +46,10 @@ io.on("connection",(socket)=>{
     
     
   });
-  socket.on("connect_error", (err) => {
-    console.log("CONNECT ERROR:", err.message);
-    console.log("DESCRIPTION:", err.description);
-    console.log("CONTEXT:", err.context);
-});
+
   
 })
-io.engine.on("connection_error", (err) => {
-    console.log("CONNECTION ERROR:", err.message);
-    console.log("CODE:", err.code);
-    console.log("CONTEXT:", err.context);
-});
+
 
 
 

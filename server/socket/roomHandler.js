@@ -11,7 +11,7 @@ export function roomHandler(io,socket){
         id=id+chars[Math.floor(Math.random()*chars.length)]
       }
     }while(id in rooms)
-      id="ABCDEF"
+
     socket.join(id)
     rooms[id]={}
     rooms[id]["block"]=false
@@ -26,9 +26,7 @@ export function roomHandler(io,socket){
   })
   socket.on("enteredRoomID",(input)=>{
     let enteredid=input[0]
-    
     let name=input[1]
-    
     if(!(enteredid in rooms)){
       socket.emit("room_state","invalidID")
     }
@@ -41,7 +39,7 @@ export function roomHandler(io,socket){
         socket.join(enteredid)
         initializePlayers(enteredid,socket.id,name)
         let [joinedplayers,startmatch]=joinedPlayersStatus(enteredid)
-        
+        //emit room state
         io.to(enteredid).emit("validOrNot",[joinedplayers,enteredid])
       }
       
@@ -56,6 +54,9 @@ export function roomHandler(io,socket){
       rooms[enteredid]["gameOver"]=false
       rooms[enteredid]["block"]=false
       rooms[enteredid]["players"][socket.id]["becomeZombie"]=false
+      //these are already done in utils initialize
+      //already done when 
+      //or are they restarting
   
       let [joinedplayers,startmatch]=joinedPlayersStatus(enteredid)
       io.to(enteredid).emit("start_match",[joinedplayers,startmatch])
